@@ -11,17 +11,29 @@ namespace ExceptionPrac
         static void Main(string[] args)
         {
             string[] array = { "가", "나" };
-            Console.Write("숫자를 입력");
-            int input = int.Parse(Console.ReadLine());
+            Console.Write("숫자 입력:");
 
-            if (input>= 0 &&input < array.Length)
+            try
             {
+                int input = int.Parse(Console.ReadLine());
                 Console.WriteLine("입력한 위치의 값은 '" + array[input] + "'입니다.");
-            }
-            else
+            }catch(IndexOutOfRangeException ex)
             {
-                Console.WriteLine("인덱스 범위를 넘었습니다.");
+                Console.WriteLine("인덱스 범위를 벗어났습니다.");
             }
+             catch(FormatException ex)
+            {
+                Console.WriteLine("숫자 입력:");
+            }
+
+            catch (Exception ex) 
+            {
+                Console.WriteLine(ex.GetType());
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.StackTrace);
+            }
+           
+            
 
 
         
